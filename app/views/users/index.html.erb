@@ -5,6 +5,7 @@
         Name: <%= user.name %>
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+          <%= link_to 'Invite to Friendship',  user_friendships_path(user), method: :post, class: 'profile-link' %>
         </span>
       </li>
     <% end %>

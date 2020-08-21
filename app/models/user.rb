@@ -10,5 +10,17 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :friendships
-  has_many :friends, through: :friendships, source: :user
+  has_many :reverse_friendships, foreign_key: :friend_id, class_name: Friendship.name
+  has_many :friends,
+           -> { where(friendships: { accepted: true }) },
+           through: :friendships,
+           source: :user
+  has_many :received_friend_requests,
+           -> { where(friendships: { accepted: false }) },
+           through: :reverse_friendships,
+           source: :user
+  has_many :sent_friend_requests,
+           -> { where(friendships: { accepted: false }) },
+           through: :friendships,
+           source: :user
 end
