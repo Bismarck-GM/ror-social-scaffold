@@ -44,7 +44,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec'
+  gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
