@@ -8,4 +8,8 @@ class Friendship < ApplicationRecord
   def validate_friend
     errors.add(' ', "You can't request yourself as a friend. Being lonely is not an excuse") if user_id == friend_id
   end
+
+  def create_reverse_friendship
+    Friendship.create(user_id: friend_id, friend_id: user_id, accepted: true)
+  end
 end
