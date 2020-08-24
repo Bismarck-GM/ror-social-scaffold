@@ -6,7 +6,9 @@ RSpec.describe User, type: :model do
     it { should have_many(:likes).dependent(:destroy) }
     it { should have_many(:posts) }
     it { should have_many(:friendships) }
-    it { should have_many(:friends).through(:friendships).source(:user) }
+    it { should have_many(:friends).conditions(friendships: { accepted: true }).through(:friendships).source(:user) }
+    it { should have_many(:received_friend_requests).conditions(friendships: { accepted: false }).through(:reverse_friendships).source(:user) }
+    it { should have_many(:sent_friend_requests).conditions(friendships: { accepted: false }).through(:friendships).source(:user) }
   end
 
   describe 'validations' do
