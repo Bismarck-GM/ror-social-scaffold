@@ -23,4 +23,10 @@ class User < ApplicationRecord
            -> { where(friendships: { accepted: false }) },
            through: :friendships,
            source: :user
+
+  def is_friend?(user, accepted=true)
+    !friendships.find do |friendship| 
+      (friendship.user_id == user.id || friendship.friend_id == user.id) && friendship.accepted == accepted
+    end.nil?
+  end
 end

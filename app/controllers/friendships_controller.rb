@@ -9,7 +9,7 @@ class FriendshipsController < ApplicationController
     request = current_user.friendships.build(friend_id: params[:user_id], accepted: false)
 
     if request.save
-      redirect_to users_path, notice: 'Friend request was sent successfully.'
+      redirect_back fallback_location: users_path, notice: 'Friend request was sent successfully.'
     else
       redirect_to users_path, alert: request.errors.full_messages.join(', ')
     end
@@ -25,5 +25,11 @@ class FriendshipsController < ApplicationController
     friendship = current_user.reverse_friendships.find_by!(user_id: params[:user_id])
     friendship.destroy
     redirect_to friendships_path, notice: 'Friendship rejected successfully.'
+  end
+
+  def cancel
+    friendship = current_user.friendships.find_by!(friend_id: params[:user_id])
+    friendship.destroy
+    redirect_back fallback_location: users_path, notice: 'Friendship request cancelled.'
   end
 end
