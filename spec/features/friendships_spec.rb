@@ -25,12 +25,6 @@ RSpec.describe 'Friendships', type: :feature do
     expect(friendship).to_not be(nil)
   end
 
-  scenario 'Should not allow a user to friend request themselves' do
-    visit users_path
-    find(:xpath, "//a[@href='#{user_friendships_path(user1)}']").click
-    expect(page).to have_content('You can\'t request yourself as a friend. Being lonely is not an excuse')
-  end
-
   scenario 'Should allow users to accept friendships' do
     user1.reverse_friendships.create(accepted: false, user_id: user2.id)
     visit friendships_path
