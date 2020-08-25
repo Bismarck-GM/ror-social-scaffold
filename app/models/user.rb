@@ -25,9 +25,9 @@ class User < ApplicationRecord
            through: :friendships,
            source: :user
   has_many :accepted_friendships,
-          -> { where(accepted: true) },
-          class_name: 'Friendship'
-  
+           -> { where(accepted: true) },
+           class_name: 'Friendship'
+
   def friend?(user, accepted = true)
     !friendships.find { |friendship| friendship.friend_id == user.id && friendship.accepted == accepted }.nil?
   end
