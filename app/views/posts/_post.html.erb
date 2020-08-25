@@ -8,6 +8,15 @@
       <%= like_or_dislike_btn(post) %>
     </div>
   </div>
+  <div>
+    <span class='post-date'>
+      <%= "#{pluralize(post.likes.length, 'like')}" %>
+    </span>
+    and
+    <span class='post-date'>
+      <%= "#{pluralize(post.comments.length, 'comment')}" %>
+    </span>
+  </div>
   <p class="post-content">
     <%= post.content %>
   </p>

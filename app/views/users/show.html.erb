@@ -1,8 +1,6 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
-  <%= link_to user_friendships_path(@user), method: :post do %>
-    <button>Invite to Friendship</button>
-  <% end %>
+  <%= show_invite_to_friendship(@user) %>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
