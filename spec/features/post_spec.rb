@@ -14,6 +14,7 @@ RSpec.describe 'Posts', type: :feature do
 
   scenario 'Users should be able to see their posts and their friends\' posts in the timeline ONLY' do
     user1.friendships.create(accepted: true, friend_id: user2.id)
+    user1.friendships.create(accepted: false, friend_id: user3.id)
     post1 = user1.posts.create(content: 'user1 post')
     post2 = user2.posts.create(content: 'user2 post')
     post3 = user3.posts.create(content: 'user3 post')

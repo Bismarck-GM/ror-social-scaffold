@@ -24,16 +24,15 @@ class User < ApplicationRecord
            -> { where(friendships: { accepted: false }) },
            through: :friendships,
            source: :user
-
-  has_many :timeline_posts, -> { where(id: [id, friendships.ids, reverse_friends.ids]) }, class_name: Post.name
-
+  has_many :accepted_friendships,
+          -> { where(accepted: true) },
+          class_name: 'Friendship'
+  
   def friend?(user, accepted = true)
-    !friendships.find do |friendship|
-      (friendship.user_id == user.id || friendship.friend_id == user.id) && friendship.accepted == accepted
-    end.nil?
+    !friendships.find { |friendship| friendship.friend_id == user.id && friendship.accepted == accepted }.nil?
   end
 
   def timeline_posts
-    Post.where(user_id: [id] + friendships.pluck('friend_id'))
+    Post.where(user_id: [id] + accepted_friendships.pluck('friend_id'))
   end
 end
