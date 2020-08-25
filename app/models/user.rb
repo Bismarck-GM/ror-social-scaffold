@@ -10,8 +10,13 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :friendships
-  # HARDCODING FOR THE FUL WEW
+  # HARDCODING FOR THE WIN WEW
   has_many :reverse_friendships, foreign_key: :friend_id, class_name: 'Friendship'
+  has_many :accepted_friendships, -> { where(accepted: true) }, class_name: 'Friendship'
+  has_many :accepted_reverse_friendships,
+           -> { where(accepted: true) },
+           foreign_key: :friend_id,
+           class_name: 'Friendship'
   has_many :friends,
            -> { where(friendships: { accepted: true }) },
            through: :friendships,
@@ -34,6 +39,7 @@ class User < ApplicationRecord
   end
 
   def timeline_posts
-    Post.where(user_id: [id] + friendships.pluck('friend_id'))
+    ids = [id] + accepted_friendships.pluck('friend_id') + accepted_reverse_friendships.pluck('user_id')
+    Post.where(user_id: ids)
   end
 end

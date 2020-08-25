@@ -1,6 +1,6 @@
 module.exports = {
   apps : [{
-    script: 'rails server',
+    script: 'rails server -b 0.0.0.0',
     exec_mode : 'fork_mode',
   }],
 
