@@ -1,69 +1,39 @@
-# Scaffold for social media app with Ruby on Rails
+# Social Media App
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+## This application is supposed to be a facebook clone
+
+## Features
+- Registration & Login
+- Ability to create posts, comments, and add likes
+- Ability to add other users as friends
+
+![Screenshot](screenshot.png)
+
+## [Live Demo](https://naked-social-scaffold.herokuapp.com/)
+
+## [How to Run Locally & Run Rspec Tests](HOWTO.md) 
 
 ## Built With
 
-- Ruby v2.7.0
-- Ruby on Rails v5.2.4
-
-## Live Demo
-
-TBA
-
-
-## Getting Started
-
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-Ruby: 2.6.3
-Rails: 5.2.3
-Postgres: >=9.5
-
-### Setup
-
-Instal gems with:
-
-```
-bundle install
-```
-
-Setup database with:
-
-```
-   rails db:create
-   rails db:migrate
-```
-
-
-
-### Usage
-
-Start server with:
-
-```
-    rails server
-```
-
-Open `http://localhost:3000/` in your browser.
-
-### Run tests
-
-```
-    rpsec --format documentation
-```
-
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
-
-### Deployment
-
-TBA
+- Ruby On Rails
+- Neovim
+- VSCode
+- Rubocop
+- Stylelint
+- Github Actions
+- Postgresql
 
 ## Authors
 
-TBA
+👤 **Hasan Kharouf**
+
+- Github: [@WinterCore](https://github.com/wintercore)
+
+👤 **Gerónimo Morisot**
+
+- Github: [@Bismarck-GM](https://github.com/Bismarck-GM)
+- Twitter: [@Rewritablee](https://twitter.com/Rewritablee)
+- Linkedin: [geronimomorisot](https://linkedin.com/in/geronimomorisot)
 
 ## 🤝 Contributing
 
@@ -71,15 +41,11 @@ Contributions, issues and feature requests are welcome!
 
 Feel free to check the [issues page](issues/).
 
-## Show your support
-
-Give a ⭐️ if you like this project!
-
 ## Acknowledgments
 
-TBA
+- Microverse
+- [Shingi's Repo](https://github.com/simandebvu/Social-media-website)
 
 ## 📝 License
 
-TBA
-
+This project is [MIT](lic.url) licensed.
