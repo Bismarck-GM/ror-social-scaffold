@@ -5,6 +5,7 @@
         Name: <%= user.name %>
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+          <%= show_invite_to_friendship(user) %>
         </span>
       </li>
     <% end %>
