@@ -28,8 +28,16 @@ class User < ApplicationRecord
            -> { where(accepted: true) },
            class_name: 'Friendship'
 
-  def friend?(user, accepted = true)
-    !friendships.find { |friendship| friendship.friend_id == user.id && friendship.accepted == accepted }.nil?
+  def accepted_friendship?(user)
+    !friendships.find { |f| f.friend_id == user.id && f.accepted }.nil?
+  end
+
+  def pending_friendship?(user)
+    !friendships.find { |f| f.friend_id == user.id && !f.accepted }.nil?
+  end
+
+  def pending_received_friendship?(user)
+    !reverse_friendships.find { |f| f.user_id == user.id && !f.accepted }.nil?
   end
 
   def timeline_posts
