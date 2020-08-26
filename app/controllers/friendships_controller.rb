@@ -17,8 +17,7 @@ class FriendshipsController < ApplicationController
 
   def accept
     friendship = current_user.reverse_friendships.find_by!(user_id: params[:user_id])
-    friendship.update accepted: true
-    friendship.create_reverse_friendship
+    friendship.confirm_friend
     redirect_to friendships_path, notice: 'Friendship accepted successfully.'
   end
 
